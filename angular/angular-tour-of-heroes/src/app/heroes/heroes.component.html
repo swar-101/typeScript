@@ -1,0 +1,78 @@
+
+<!-- <h2>{{hero}}</h2> -->
+
+<!-- 
+
+    1. Interpolation:
+        Now by interpolation we can show hero's id and name as such
+        This is how we show the hero object.. 
+-->
+<!-- <h2>{{hero.name}} Details</h2> -->
+
+
+<!-- 
+
+    2. Pipes: 
+        We can also format bindings with UppercasePipe. 
+-->
+<!-- <h2>{{hero.name | uppercase}}</h2> -->
+
+<!-- result: the name of the hero will be displayed in uppercase the 
+        pipe character '|' activates the built-in UppercasePipe -->
+<!--    Pipes are a good way to format strings, currency, amounts, 
+        dates and other display data. -->
+
+<!-- 
+
+    3. Two way binding :
+        Here it binds 'hero.name' property to the HTML text box so
+        that data can flow in both the directions.
+        Data can flow from the hero.name property to the text box and
+        from the text box back to 'hero.name'. 
+-->
+
+<!-- <div> -->
+    <!-- <label for="name">Hero name: </label> -->
+    <!-- <input id="name" [(ngModel)] = "hero.name" placeholder="name"> -->
+<!-- 
+    Although ngModel is a valid Angular directive, it isn't available by default. 
+    It belongs to FormsModule and we must import it to use this             
+-->
+<!-- </div> -->
+
+
+<!-- 
+    e.g. Interpolation of hero id 
+-->
+<!-- <div><span>id: </span>{{hero.id}}</div> -->
+<!-- <div><span>name: </span>{{hero.name}}</div> -->
+
+<!-- 
+    
+    4. List of heroes using *ngFor  
+      *ngFor is Angular's repeater directive. It repeats the host element for each
+       element in list. 
+-->
+
+<h2>My Heroes</h2>
+<ul class="heroes">
+    <li *ngFor="let hero of heroes">
+
+<!-- 
+    property heroes mentioned in the heroes.components.ts mentioned in the *ngFor
+    will get iterate 
+-->
+      
+<!-- 
+    5. Add a click event binding: 
+     paranthesis around click tell angular to listen for the button element's click event.
+     when the user clicks in the button, angular executes the onSelect(hero) expression. 
+-->
+           
+        <button type="button" (click)="onSelect(hero)">
+            <span class="badge">{{hero.id}}</span>
+            <span class="name">{{hero.name}}</span>
+        </button>
+    </li>
+</ul>
+<app-hero-detail [hero]="selectedHero"></app-hero-detail>
